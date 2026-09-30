@@ -21,6 +21,7 @@ def generate_ai_response(prompt):
     """Generate AI response using the CodeCraft API (OpenAI-compatible endpoint)."""
     try:
         api_key = os.getenv("GEMINI_API_KEY")
+        logger.info(f"API Key status: {'LOADED (' + str(len(api_key)) + ' chars, starts with: ' + api_key[:8] + '...)' if api_key else 'NOT FOUND'}")
         if not api_key or api_key == "your_gemini_api_key_here" or api_key.strip() == "":
             raise GeminiAPIError("Gemini API key is not configured.")
 
