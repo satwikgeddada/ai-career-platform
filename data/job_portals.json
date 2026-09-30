@@ -1,0 +1,38 @@
+[
+  {
+    "name": "LinkedIn Jobs",
+    "description": "Professional networking and comprehensive job search platform.",
+    "roles": ["All"],
+    "url": "https://www.linkedin.com/jobs"
+  },
+  {
+    "name": "Wellfound",
+    "description": "The top platform for discovering startup jobs and connecting with founders.",
+    "roles": ["Software Engineer", "Frontend Developer", "Backend Developer", "AI Engineer", "Data Scientist"],
+    "url": "https://wellfound.com/"
+  },
+  {
+    "name": "Internshala",
+    "description": "Best for students seeking internships and fresher level jobs in India.",
+    "roles": ["All", "Fresher"],
+    "url": "https://internshala.com/"
+  },
+  {
+    "name": "Naukri",
+    "description": "Leading Indian job portal across all industries and experience levels.",
+    "roles": ["All"],
+    "url": "https://www.naukri.com/"
+  },
+  {
+    "name": "Indeed",
+    "description": "Aggregator of job postings from thousands of websites.",
+    "roles": ["All"],
+    "url": "https://www.indeed.com/"
+  },
+  {
+    "name": "Cutshort",
+    "description": "AI-driven platform matching top tech talent with verified companies.",
+    "roles": ["Software Engineer", "Frontend Developer", "Backend Developer", "AI Engineer", "Data Scientist"],
+    "url": "https://cutshort.io/"
+  }
+]

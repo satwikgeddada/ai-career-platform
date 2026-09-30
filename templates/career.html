@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Career Guide | AI Career</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-decoration"><div class="bg-blob"></div><div class="bg-blob"></div><div class="bg-blob"></div></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo"><i class="fa-solid fa-graduation-cap"></i> AI Career</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fa-solid fa-bars"></i></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li><a href="/career" class="active">Career Guide</a></li>
+                <li><a href="/resume">Resume Analyzer</a></li>
+                <li><a href="/interview">Mock Interview</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="page-header">
+            <h1>AI Career Guide</h1>
+            <p>Tell us about your background and goals — we'll create a personalized 30-day roadmap.</p>
+        </div>
+
+        <div class="container" style="padding-top: 0;">
+            <div class="form-card glass-strong">
+                <form id="careerForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="e.g. Satwik" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="targetRole">Target Job Role</label>
+                        <input type="text" id="targetRole" placeholder="e.g. AI Engineer, Full Stack Developer" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="currentSkills">Current Skills (comma separated)</label>
+                        <input type="text" id="currentSkills" placeholder="e.g. Python, SQL, Machine Learning" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="experienceLevel">Experience Level</label>
+                        <select id="experienceLevel" required>
+                            <option value="Fresher">Fresher</option>
+                            <option value="Beginner">Beginner</option>
+                            <option value="Intermediate">Intermediate</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="preferredDomain">Preferred Domain (optional)</label>
+                        <input type="text" id="preferredDomain" placeholder="e.g. Healthcare, Finance, E-commerce">
+                    </div>
+                    <button type="submit" class="btn btn-primary" style="width: 100%;"><i class="fa-solid fa-wand-magic-sparkles"></i> Generate Career Plan</button>
+                </form>
+                <div class="loader" id="careerLoader">
+                    <div class="loader-dots"><span></span><span></span><span></span></div>
+                    <p class="loader-text">Creating your personalized roadmap...</p>
+                </div>
+            </div>
+
+            <div class="results-section" id="resultsSection">
+                <h2 style="margin-bottom: 2rem;">Your Personalized Career Plan</h2>
+
+                <div class="glass-static" style="padding: 2rem; margin-bottom: 2rem; text-align: left;">
+                    <h3 style="color: var(--primary-dark); margin-bottom: 0.75rem;"><i class="fa-solid fa-quote-left" style="opacity:0.3;"></i> Career Summary</h3>
+                    <p id="res-summary" style="font-size: 1.05rem;"></p>
+                </div>
+
+                <div class="card-grid" style="margin-bottom: 2rem;">
+                    <div class="glass-static" style="padding: 1.5rem; text-align: left;">
+                        <h3><i class="fa-solid fa-check-circle" style="color: var(--primary);"></i> Existing Skills</h3>
+                        <div class="pill-container" id="res-existing-skills" style="margin-top: 1rem;"></div>
+                    </div>
+                    <div class="glass-static" style="padding: 1.5rem; text-align: left;">
+                        <h3><i class="fa-solid fa-triangle-exclamation" style="color: #F59E0B;"></i> Skill Gaps</h3>
+                        <div class="pill-container" id="res-skill-gaps" style="margin-top: 1rem;"></div>
+                    </div>
+                    <div class="glass-static" style="padding: 1.5rem; text-align: left;">
+                        <h3><i class="fa-solid fa-fire" style="color: #EF4444;"></i> Priority Skills</h3>
+                        <div class="pill-container" id="res-priority-skills" style="margin-top: 1rem;"></div>
+                    </div>
+                </div>
+
+                <h3 style="text-align: center; margin: 3rem 0 1.5rem;">30-Day Learning Roadmap</h3>
+                <div id="res-roadmap"></div>
+
+                <div class="card-grid" style="margin-top: 3rem;">
+                    <div class="glass-static" style="padding: 1.5rem; text-align: left;">
+                        <h3><i class="fa-solid fa-laptop-code"></i> Project Recommendations</h3>
+                        <ul id="res-projects" style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-light);"></ul>
+                    </div>
+                    <div class="glass-static" style="padding: 1.5rem; text-align: left;">
+                        <h3><i class="fa-solid fa-comments"></i> Interview Prep Topics</h3>
+                        <ul id="res-interview" style="margin-left: 1.5rem; margin-top: 1rem; color: var(--text-light);"></ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo"><i class="fa-solid fa-graduation-cap"></i> AI Career</div>
+            <p>&copy; 2026 AI Career Platform.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/career.js') }}"></script>
+</body>
+</html>

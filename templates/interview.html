@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mock Interview | AI Career</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="bg-decoration"><div class="bg-blob"></div><div class="bg-blob"></div><div class="bg-blob"></div></div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="/" class="logo"><i class="fa-solid fa-graduation-cap"></i> AI Career</a>
+            <button class="mobile-menu-btn" id="mobileMenuBtn"><i class="fa-solid fa-bars"></i></button>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="/">Home</a></li>
+                <li><a href="/career">Career Guide</a></li>
+                <li><a href="/resume">Resume Analyzer</a></li>
+                <li><a href="/interview" class="active">Mock Interview</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <!-- SETUP -->
+        <div id="setupView">
+            <div class="page-header">
+                <h1>AI Interview Preparation</h1>
+                <p>Practice MCQ tests customized for your target role. Identify weak areas and improve.</p>
+            </div>
+
+            <div class="container" style="padding-top: 0;">
+                <div class="form-card glass-strong">
+                    <form id="interviewForm">
+                        <div class="form-group">
+                            <label for="role">Target Role</label>
+                            <select id="role" required>
+                                <option value="AI Engineer">AI Engineer</option>
+                                <option value="ML Engineer">ML Engineer</option>
+                                <option value="Data Scientist">Data Scientist</option>
+                                <option value="Backend Developer">Backend Developer</option>
+                                <option value="Frontend Developer">Frontend Developer</option>
+                                <option value="Full Stack Developer">Full Stack Developer</option>
+                                <option value="Software Developer">Software Developer</option>
+                                <option value="Data Analyst">Data Analyst</option>
+                                <option value="Cloud Engineer">Cloud Engineer</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Interview Type</label>
+                            <div class="select-cards" id="typeCards">
+                                <div class="select-card selected" data-value="Technical">Technical</div>
+                                <div class="select-card" data-value="HR">HR</div>
+                                <div class="select-card" data-value="Aptitude">Aptitude</div>
+                                <div class="select-card" data-value="Project/Resume Based">Project</div>
+                                <div class="select-card" data-value="Mixed Interview">Mixed</div>
+                            </div>
+                            <input type="hidden" id="type" value="Technical">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Difficulty</label>
+                            <div class="select-cards" id="diffCards">
+                                <div class="select-card" data-value="Beginner">Beginner</div>
+                                <div class="select-card selected" data-value="Intermediate">Intermediate</div>
+                                <div class="select-card" data-value="Advanced">Advanced</div>
+                            </div>
+                            <input type="hidden" id="difficulty" value="Intermediate">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Number of Questions</label>
+                            <div class="select-cards" id="numCards">
+                                <div class="select-card" data-value="5">5</div>
+                                <div class="select-card selected" data-value="10">10</div>
+                                <div class="select-card" data-value="15">15</div>
+                                <div class="select-card" data-value="20">20</div>
+                            </div>
+                            <input type="hidden" id="num_questions" value="10">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="resume_context">Paste Resume Snippets (Optional)</label>
+                            <textarea id="resume_context" rows="3" placeholder="e.g. Developed an AI Resume Analyzer using Flask and Gemini API..."></textarea>
+                        </div>
+
+                        <input type="hidden" id="weak_topics_focus" value="">
+
+                        <button type="submit" class="btn btn-primary" style="width: 100%; font-size: 1.05rem;"><i class="fa-solid fa-play"></i> Start Mock Test</button>
+                    </form>
+                    <div class="loader" id="interviewLoader">
+                        <div class="loader-dots"><span></span><span></span><span></span></div>
+                        <p class="loader-text">Preparing your interview questions...</p>
+                    </div>
+                </div>
+
+                <div style="max-width: 800px; margin: 3rem auto 0;">
+                    <h3 style="margin-bottom: 1rem;">Previous Attempts</h3>
+                    <div id="historyContainer"><p style="color:var(--text-light);">Loading history...</p></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- QUIZ -->
+        <div class="container">
+            <div style="max-width:800px; margin:0 auto;">
+                <div class="quiz-container glass-strong" id="quizView">
+                    <div class="quiz-header">
+                        <h2>AI Interview Preparation</h2>
+                        <div class="quiz-meta">
+                            <span id="metaRole"><i class="fa-solid fa-bullseye"></i> AI Engineer</span>
+                            <span id="metaType"><i class="fa-solid fa-clipboard-question"></i> Technical</span>
+                            <span id="metaDiff"><i class="fa-solid fa-signal"></i> Intermediate</span>
+                        </div>
+                        <div class="progress-track">
+                            <div class="progress-fill" id="quizProgress" style="background:white;"></div>
+                        </div>
+                        <div class="quiz-progress-label" id="quizProgressText">Question 1 of 10</div>
+                    </div>
+                    <div class="quiz-body">
+                        <div class="question-number" id="questionNumber">QUESTION 1</div>
+                        <div class="question-text" id="questionText">Loading question...</div>
+                        <ul class="options-list" id="optionsContainer"></ul>
+                    </div>
+                    <div class="quiz-footer">
+                        <button class="btn btn-outline" id="prevBtn" disabled><i class="fa-solid fa-arrow-left"></i> Previous</button>
+                        <button class="btn btn-primary" id="nextBtn">Next <i class="fa-solid fa-arrow-right"></i></button>
+                        <button class="btn btn-primary" id="submitBtn" style="display:none;"><i class="fa-solid fa-check"></i> Submit Test</button>
+                    </div>
+                    <div class="loader" id="evaluatingLoader" style="padding:2rem;">
+                        <div class="loader-dots"><span></span><span></span><span></span></div>
+                        <p class="loader-text">Evaluating your answer...</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RESULT -->
+            <div class="result-wrapper" id="resultView">
+                <div class="result-banner">
+                    <h2>Mock Test Result</h2>
+                    <div class="score-ring"><span class="big" id="resBig">8/10</span></div>
+                    <div class="perf-label" id="resPerf">Good</div>
+                    <div class="stat-row">
+                        <div class="stat-item"><div class="val" id="resPct">80%</div><div class="lbl">Percentage</div></div>
+                        <div class="stat-item"><div class="val" id="resCorrect">8</div><div class="lbl">Correct</div></div>
+                        <div class="stat-item"><div class="val" id="resWrong">2</div><div class="lbl">Incorrect</div></div>
+                        <div class="stat-item"><div class="val" id="resAcc">80%</div><div class="lbl">Accuracy</div></div>
+                    </div>
+                </div>
+
+                <div class="section-card glass-static">
+                    <h3><i class="fa-solid fa-chart-bar" style="color:var(--primary);"></i> Topic Performance</h3>
+                    <div id="topicPerformance"></div>
+                </div>
+
+                <div class="section-card glass-static" id="weakCard">
+                    <h3 style="color:#DC2626;"><i class="fa-solid fa-triangle-exclamation"></i> Focus Areas</h3>
+                    <ul class="weak-list" id="weakTopicsList"></ul>
+                    <p style="margin-top:1rem; color:var(--text-light); font-size:0.9rem;" id="weakRecommend">You can improve your score by practicing these topics.</p>
+                    <button class="btn btn-danger" id="practiceWeakBtn" style="width:100%; margin-top:1rem;"><i class="fa-solid fa-dumbbell"></i> Practice Weak Topics</button>
+                </div>
+
+                <div class="action-btns">
+                    <button class="btn btn-outline" id="retakeBtn"><i class="fa-solid fa-rotate-right"></i> Retake Test</button>
+                    <a href="/resume" class="btn btn-outline"><i class="fa-solid fa-file-lines"></i> Analyze Resume</a>
+                    <a href="/career" class="btn btn-primary"><i class="fa-solid fa-list-check"></i> View Recommended Topics</a>
+                </div>
+
+                <h3 style="margin-bottom:1rem;">Question Review</h3>
+                <div id="reviewContainer"></div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-container">
+            <div class="footer-logo"><i class="fa-solid fa-graduation-cap"></i> AI Career</div>
+            <p>&copy; 2026 AI Career Platform.</p>
+        </div>
+    </footer>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/interview.js') }}"></script>
+</body>
+</html>

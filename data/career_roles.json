@@ -1,0 +1,22 @@
+{
+  "AI Engineer": {
+    "required_skills": ["Python", "Machine Learning", "Deep Learning", "SQL", "Pandas", "NumPy"],
+    "preferred_skills": ["TensorFlow", "PyTorch", "NLP", "Generative AI", "Docker", "AWS", "Git"]
+  },
+  "Software Engineer": {
+    "required_skills": ["Python", "Java", "Data Structures", "Algorithms", "Git"],
+    "preferred_skills": ["CI/CD", "AWS", "Docker", "SQL", "Agile", "Linux"]
+  },
+  "Frontend Developer": {
+    "required_skills": ["HTML", "CSS", "JavaScript", "React", "Responsive Design"],
+    "preferred_skills": ["TypeScript", "Vue", "Angular", "Redux", "Webpack", "Figma"]
+  },
+  "Backend Developer": {
+    "required_skills": ["Python", "Node.js", "SQL", "REST API", "Database Design"],
+    "preferred_skills": ["GraphQL", "Docker", "Kubernetes", "Redis", "MongoDB", "AWS"]
+  },
+  "Data Scientist": {
+    "required_skills": ["Python", "SQL", "Statistics", "Machine Learning", "Data Visualization"],
+    "preferred_skills": ["R", "Tableau", "PowerBI", "Spark", "Hadoop", "Scikit-Learn"]
+  }
+}

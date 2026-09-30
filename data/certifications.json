@@ -1,0 +1,30 @@
+[
+  {
+    "name": "AWS Certified Solutions Architect – Associate",
+    "provider": "Amazon Web Services",
+    "roles": ["Software Engineer", "Backend Developer"],
+    "description": "Validates your ability to design and deploy well-architected solutions on AWS.",
+    "url": "https://aws.amazon.com/certification/certified-solutions-architect-associate/"
+  },
+  {
+    "name": "Google Data Analytics Professional Certificate",
+    "provider": "Google / Coursera",
+    "roles": ["Data Scientist", "Data Analyst"],
+    "description": "Learn the skills needed to apply to introductory-level data analyst roles.",
+    "url": "https://grow.google/certificates/data-analytics/"
+  },
+  {
+    "name": "DeepLearning.AI TensorFlow Developer",
+    "provider": "DeepLearning.AI / Coursera",
+    "roles": ["AI Engineer", "Data Scientist"],
+    "description": "Learn how to build powerful machine learning models using TensorFlow.",
+    "url": "https://www.coursera.org/professional-certificates/tensorflow-in-practice"
+  },
+  {
+    "name": "Meta Front-End Developer Professional Certificate",
+    "provider": "Meta / Coursera",
+    "roles": ["Frontend Developer", "Software Engineer"],
+    "description": "Build dynamic and interactive user interfaces using React and modern web tech.",
+    "url": "https://www.coursera.org/professional-certificates/meta-front-end-developer"
+  }
+]
